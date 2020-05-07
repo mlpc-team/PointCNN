@@ -177,9 +177,9 @@ def main():
     saver = tf.train.Saver(max_to_keep=None)
 
     # backup all code
-    if not args.no_code_backup:
-        code_folder = os.path.abspath(os.path.dirname(__file__))
-        shutil.copytree(code_folder, os.path.join(root_folder, os.path.basename(code_folder)))
+    # if not args.no_code_backup:
+    #     code_folder = os.path.abspath(os.path.dirname(__file__))
+    #     shutil.copytree(code_folder, os.path.join(root_folder, os.path.basename(code_folder)))
 
     folder_ckpt = os.path.join(root_folder, 'ckpts')
     if not os.path.exists(folder_ckpt):

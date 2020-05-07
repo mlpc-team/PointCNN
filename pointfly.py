@@ -97,7 +97,7 @@ def augment(points, xforms, range=None):
         return points_xformed
 
     jitter_data = range * tf.random_normal(tf.shape(points_xformed), name='jitter_data')
-    jitter_clipped = tf.clip_by_value(jitter_data, -5 * range, 5 * range, name='jitter_clipped')
+    jitter_clipped = tf.clip_by_value(jitter_data, -5 * range[0], 5 * range[0], name='jitter_clipped')
     return points_xformed + jitter_clipped
 
 

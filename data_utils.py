@@ -125,7 +125,7 @@ def load_cls(filelist):
     folder = os.path.dirname(filelist)
     for line in open(filelist):
         filename = os.path.basename(line.rstrip())
-        data = h5py.File(os.path.join(folder, filename))
+        data = h5py.File(os.path.join(folder, filename), 'r')
         if 'normal' in data:
             points.append(np.concatenate([data['data'][...], data['normal'][...]], axis=-1).astype(np.float32))
         else:
@@ -159,7 +159,7 @@ def load_seg(filelist):
 
     folder = os.path.dirname(filelist)
     for line in open(filelist):
-        data = h5py.File(os.path.join(folder, line.strip()))
+        data = h5py.File(os.path.join(folder, line.strip()), 'r')
         points.append(data['data'][...].astype(np.float32))
         labels.append(data['label'][...].astype(np.int64))
         point_nums.append(data['data_num'][...].astype(np.int32))
